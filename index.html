@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SALMI</title>
+    <link rel="icon" href="guitarra.png" type="image/x-icon"> <!-- Enlace al favicon -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1a1a1a; /* Fondo negro con poco gris */
+            color: rgb(14, 13, 13);
+        }
+        nav {
+            background-color: #fcf3cf; /* Fondo del menú */
+            padding: 10px;
+            border-bottom: 2px solid #f3eff1; /* Azul oscuro */
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        nav a {
+            color: rgb(9, 9, 9);
+            text-decoration: none;
+            padding: 10px 15px;
+            display: inline-block;
+        }
+        nav a:hover {
+            background-color: #b2ccf1; /* Azul más claro al pasar el ratón */
+            border-radius: 5px;
+        }
+        .header {
+            background-color: #000000; /* Azul oscuro */
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px;
+            position: relative; /* Para posicionar el logotipo */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .header img {
+            width: 40px; /* Tamaño del favicon */
+            height: auto;
+            position: absolute;
+            top: 50%;
+            left: 20px;
+            transform: translateY(-50%);
+        }
+        .header h1 {
+            margin: 0;
+            color: white;
+            font-size: 24px;
+        }
+        .main-content {
+            padding: 20px;
+        }
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .image-item {
+            background-color: #f9f6f6;
+            border-radius: 10px;
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s;
+            position: relative; /* Para posicionar el reproductor de audio */
+        }
+        .image-item:hover {
+            transform: scale(1.05);
+        }
+        .image-item img {
+            width: 100%;
+            height: 200px; /* Tamaño cuadrangular */
+            object-fit: cover;
+        }
+        .image-item p {
+            padding: 10px;
+            font-size: 14px;
+            color: #020202;
+        }
+        .search-container {
+            display: none; /* Ocultar el buscador por defecto */
+            padding: 20px;
+            text-align: center;
+            background-color: #fcf3cf;
+            border-bottom: 2px solid #f3eff1; /* Azul oscuro */
+        }
+        .search-container input {
+            padding: 10px;
+            width: 80%;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #070000;
+        }
+        .search-results {
+            margin-top: 20px;
+        }
+        .search-results p {
+            font-size: 18px;
+            color: #020202;
+            cursor: pointer;
+        }
+        #audio-section {
+            display: none;
+            margin-top: 20px;
+            text-align: center;
+        }
+        #audio-section img {
+            max-width: 200px;
+            height: auto;
+            margin-bottom: 10px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <img src="guitarra.png" alt="Favicon de SALMI">
+        <h1>SALMI</h1>
+    </header>
+
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="#" id="search-toggle">Buscar</a>
+        <a href="biblioteca.html">Biblioteca</a>
+    </nav>
+
+    <div class="search-container" id="search-container">
+        <input type="text" id="search-input" placeholder="Buscar canciones...">
+        <div class="search-results" id="search-results"></div>
+    </div>
+
+    <div class="main-content">
+        <div class="image-grid">
+            <a href="seth.html" target="_blank" class="image-item" data-songs="Como David (Medley) l Seth Jafet & Adoración + Fuego l Llamada Final l Video en vivo, Casa De Adonai l Seth Jafet & Adoración + Fuego l Feat Joza Balmori l 2023, Seth Jafet - Corros ft. Mario rivera iii, El Señor Es Mi Rey l Seth Jafet & Adoración + Fuego l 2022, En Sion Suena la Trompeta l Seth Jafet & Adoración + Fuego l Video Clip 2022" data-audio="como david.mp3,casa de adonai.mp3,corros.mp3,el señor.mp3,en sion.mp3" data-song-images="como david1.jpeg,casa de adonai2.jpg,corros3.jpg,elseñor.jpg,ension.jpg">
+                <img src="seth2.jpeg" alt="Seth Jafet">
+                <p>SETH JAFET</p>
+            </a>
+            <a href="miel.html" target="_blank" class="image-item" data-songs=" Vivo Para Adorarte, Cristo No Está Muerto (feat. Juan Carlos Alvarado), El Santo De Israel, El Poderoso De Israel, Grande Y Fuerte, Los Muros Caerán, Toda La Noche Sin Parar" data-audio="vivo para.mp3,cristo no.mp3,El Santo De Israel.mp3,el poderoso.mp3,Grande Y Fuerte.mp3,Los Muros Caerán.mp3, Toda La Noche Sin Parar.mp3" data-song-images="avivamiento.jpg,proezas.jpg, avivamiento.jpg, medley.jpg, avivamiento.jpg, proezas.jpg, proezas.jpg">
+                <img src="miel san marcos.jpeg" alt="Miel San Marcos">
+                <p>MIEL SAN MARCOS</p>
+            </a>
+            <a href="new_wine.html" target="_blank" class="image-item" data-songs="ACEITE FRESCO - New Wine, A Una Voz | Concierto En Vivo | New Wine, Al Que Es Tres Veces Santo - New Wine, Alistate - New Wine, Estruendo - Vientos de Gloria | New Wine, Incomprensible Amor - Vientos de Gloria | New Wine, Fuego Santo - Encuéntranos Espíritu Santo | New Wine, Santo Espíritu de Dios - New Wine, EL MOVIMIENTO DE GLORIA - New Wine, VEN DESCANSA SANTO ESPIRITU - New Wine , Vientos de Gloria - Vientos de Gloria | New Wine"    data-audio="new wine ace.mp3, new wine a una.mp3, new wine al santo.mp3, new wine alistate.mp3, new wine es.mp3, new wine inco.mp3, new wine fuego.mp3, new wine espi.mp3, new wine movi.mp3, new wine ven.mp3, new wine vien.mp3" data-song-images="album.jpeg, album.jpeg, album.jpeg, album2.jpeg, album3.jpg, album3.jpg, album3.jpg, album2.jpeg, album3.jpg, espi.jpg, album3.jpg">
+                <img src="New Wine.png" alt="New Wine">
+                <p>NEW WINE</p>
+            </a>
+            <a href="redimi2.html" target="_blank" class="image-item" data-songs="Redimi2 & Funky - Su Mirada (feat. Annette Moreno), Redimi2 - Tus Pasos ft Ulises, Redimi2 - Todo Va a Estar Bien (Video Oficial) ft. Evan Craft, Redimi2 x Alex Zurdo x Funky - Mira lo que hizo Dios (MLQHD), Redimi2 - VUELVO A TI (Video Oficial ) ft. Betsy Jo, Poderoso Redimi2 ft Daliza Cont" data-audio="su mirada.mp3, tus pasos.mp3, todo.mp3, mira lo.mp3, vuelvo.mp3, poderoso.mp3" data-song-images="mas.jpg,pasos.jpg, todo.jpg, mira.jpg, vuelvo.jpg, daliza.jpg">
+                <img src="redi.jpg" alt="Redimi2">
+                <p>REDIMI2</p>
+            </a>
+           
+            <!-- Agrega más imágenes según sea necesario -->
+        </div>
+    </div>
+
+    <div id="audio-section">
+        <img id="audio-image" src="" alt="Imagen de la Canción">
+        <audio id="audio-player" controls></audio>
+    </div>
+
+    <script>
+        document.getElementById('search-toggle').addEventListener('click', function() {
+            var searchContainer = document.getElementById('search-container');
+            searchContainer.style.display = searchContainer.style.display === 'none' || searchContainer.style.display === '' ? 'block' : 'none';
+        });
+
+        document.getElementById('search-input').addEventListener('input', function() {
+            var query = this.value.toLowerCase();
+            var resultsContainer = document.getElementById('search-results');
+            resultsContainer.innerHTML = ''; // Limpiar resultados anteriores
+
+            var items = document.querySelectorAll('.image-item');
+            items.forEach(function(item) {
+                var songs = item.getAttribute('data-songs').toLowerCase().split(', ');
+                var audios = item.getAttribute('data-audio').split(',');
+                var songImages = item.getAttribute('data-song-images').split(',');
+                
+                songs.forEach(function(song, index) {
+                    if (song.includes(query)) {
+                        var resultItem = document.createElement('p');
+                        resultItem.textContent = `Reproducir "${song}" de ${item.querySelector('p').textContent}`;
+                        resultItem.addEventListener('click', function() {
+                            var audioPlayer = document.getElementById('audio-player');
+                            var audioImage = document.getElementById('audio-image');
+                            var audioSection = document.getElementById('audio-section');
+                            
+                            audioPlayer.src = audios[index];
+                            audioImage.src = songImages[index];
+                            audioSection.style.display = 'block'; // Mostrar el reproductor y la imagen
+                            audioPlayer.play();
+                        });
+                        resultsContainer.appendChild(resultItem);
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

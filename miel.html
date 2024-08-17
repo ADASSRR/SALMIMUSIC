@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miel San Marcos - Canciones</title>
+    <link rel="icon" href="guitarra.png" type="image/x-icon"> <!-- Enlace al favicon -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1a1a1a;
+            color: white;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #e67e22; /* Azul oscuro */
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .header img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 5px;
+            border: 3px solid #f9e79f;
+        }
+        .header h1 {
+            margin-top: 10px;
+            font-family: 'Georgia', serif; /* Fuente diferente para el nombre */
+        }
+        .description {
+            font-family: 'Franklin Gothic Medium'; /* Fuente diferente para la descripción */
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .description p {
+            font-size: 16px;
+            color: #ccc;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+        li {
+            padding: 8px;
+            border-bottom: 1px solid #444;
+            cursor: pointer;
+            font-size: 16px;
+            font-family: 'Arial', sans-serif; /* Fuente diferente para la lista de canciones */
+            position: relative;
+            overflow: hidden;
+        }
+        li:hover {
+            background-color: #333;
+        }
+        .song-image {
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            border-radius: 5px;
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .audio-player {
+            display: none;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .audio-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .audio-controls img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border: 3px solid #fff;
+            border-radius: 5px;
+            margin-right: 20px;
+        }
+        .controls {
+            display: flex;
+            align-items: center;
+        }
+        .controls button {
+            background: #0056b3;
+            border: none;
+            color: #fff;
+            font-size: 18px;
+            cursor: pointer;
+            margin: 0 5px;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .controls button:hover {
+            background-color: #004494;
+        }
+        .duration {
+            color: #ccc;
+            margin: 0 10px;
+            font-size: 16px;
+        }
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 15px 30px;
+            background-color: #333; /* Gris oscuro */
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 18px;
+            font-family: 'Arial', sans-serif;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+        .back-button:hover {
+            background-color: #555; /* Gris más claro al pasar el ratón */
+        }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="back-button">Inicio</a>
+
+    <div class="container">
+        <div class="header">
+            <img src="miel todos.jpg" alt="MIEL SAN MARCOS">
+            <h1>Miel San Marcos</h1>
+        </div>
+        <div class="description">
+            <p>Miel San Marcos es un grupo guatemalteco de música cristiana integrado por los tres hermanos Josh, Luis y Sammy Morales.El nombre "Miel" se deriva de las siglas de Ministerios Elim, nombre inicial de la iglesia Tabernáculo de Avivamiento, y San Marcos, por el nombre del departamento en el que está ubicada</p>
+        </div>
+        <ul>
+            <li onclick="playSong('vivo para.mp3', 'Avivamiento.jpg')">
+                <img src="avivamiento.jpg" alt="Vivo Para Adorarte" class="song-image"> Vivo Para Adorarte
+            </li>
+            <li onclick="playSong('cristo no.mp3', 'proezas.jpg')">
+                <img src="proezas.jpg" alt="Cristo No Está Muerto (feat. Juan Carlos Alvarado)" class="song-image">  Cristo No Está Muerto (feat. Juan Carlos Alvarado)
+            </li>
+            <li onclick="playSong('El Santo De Israel.mp3', 'avivamiento.jpg')">
+                <img src="avivamiento.jpg" alt="El Santo De Israel" class="song-image"> El Santo De Israel
+            </li>
+            <li onclick="playSong('el poderoso.mp3', 'medley.jpg')">
+                <img src="medley.jpg" alt="EL Poderos De Israel" class="song-image"> El Poderoso De Israel 
+            </li>
+            <li onclick="playSong('Grande Y Fuerte.mp3', 'avivamiento.jpg')">
+                <img src="avivamiento.jpg" alt="Grande Y Fuerte" class="song-image"> Grande Y Fuerte
+            </li>
+        </li>
+        <li onclick="playSong('Los Muros Caerán.mp3', 'proezas.jpg')">
+            <img src="proezas.jpg" alt="Los Muros Caerán" class="song-image"> Los Muros Caerán
+        </li>
+    </li>
+    <li onclick="playSong('Toda La Noche Sin Parar.mp3', 'proezas.jpg')">
+        <img src="proezas.jpg" alt="Toda La Noche Sin Parar" class="song-image"> Toda La Noche Sin Parar
+    </li>
+        </ul>
+
+        <div class="audio-player">
+            <div class="audio-controls">
+                <img id="albumImage" src="" alt="Imagen de la canción">
+                <div class="controls">
+                    <button onclick="prevSong()">&#9664;&#9664;</button>
+                    <button onclick="togglePlayPause()">&#9658;/&#10074;&#10074;</button>
+                    <button onclick="nextSong()">&#9654;&#9654;</button>
+                </div>
+                <div class="duration">
+                    <span id="currentTime">0:00</span> / <span id="duration">0:00</span>
+                </div>
+            </div>
+            <audio id="audioPlayer" controls>
+                <source id="audioSource" src="" type="audio/mp3">
+                Tu navegador no soporta el elemento de audio.
+            </audio>
+        </div>
+    </div>
+
+    <script>
+        var audioPlayer = document.getElementById('audioPlayer');
+        var audioSource = document.getElementById('audioSource');
+        var albumImage = document.getElementById('albumImage');
+        var currentTimeDisplay = document.getElementById('currentTime');
+        var durationDisplay = document.getElementById('duration');
+        
+        audioPlayer.addEventListener('loadedmetadata', function() {
+            durationDisplay.textContent = formatTime(audioPlayer.duration);
+        });
+
+        audioPlayer.addEventListener('timeupdate', function() {
+            currentTimeDisplay.textContent = formatTime(audioPlayer.currentTime);
+        });
+
+        function playSong(songFile, imageFile) {
+            audioSource.src = songFile;
+            albumImage.src = imageFile;
+            audioPlayer.load(); // Carga el nuevo archivo de audio
+            audioPlayer.play(); // Reproduce el audio
+            document.querySelector('.audio-player').style.display = 'block'; // Muestra el reproductor de audio
+        }
+
+        function togglePlayPause() {
+            if (audioPlayer.paused) {
+                audioPlayer.play();
+            } else {
+                audioPlayer.pause();
+            }
+        }
+
+        function prevSong() {
+            // Implementar lógica para la canción anterior
+            alert('Función de canción anterior no implementada.');
+        }
+
+        function nextSong() {
+            // Implementar lógica para la siguiente canción
+            alert('Función de siguiente canción no implementada.');
+        }
+
+        function formatTime(seconds) {
+            var minutes = Math.floor(seconds / 60);
+            var secs = Math.floor(seconds % 60);
+            return minutes + ":" + (secs < 10 ? "0" : "") + secs;
+        }
+    </script>
+
+</body>
+</html>
